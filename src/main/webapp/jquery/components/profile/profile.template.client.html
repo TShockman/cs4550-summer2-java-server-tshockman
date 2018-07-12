@@ -3,14 +3,25 @@
 
 <h1>Profile</h1>
 
-<input placeholder="username" id="username">
-<br/>
-<input id="firstName"/>
-<br/>
-<input id="lastName"/>
-<br/>
+<input placeholder="username" id="username" disabled>
+
+<input id="phone" placeholder="(555) 555-5555" class="form-control"/>
+
+<input id="email" type="email" placeholder="joe@mail.com" class="form-control"/>
+
+<select id="role" class="form-control">
+  <option value="FACULTY">Faculty</option>
+  <option value="STUDENT">Student</option>
+  <option value="ADMIN">Admin</option>
+</select>
+
+<input type="datetime-local" class="form-control"/>
+
 <button id="updateButton">
   Update
+</button>
+<button id="logout">
+  Logout
 </button>
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
