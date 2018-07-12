@@ -7,6 +7,8 @@ function UserServiceClient() {
   this.updateUser = updateUser;
   this.register = register;
   this.login = login;
+  this.updateProfile = updateProfile;
+  this.logout = logout;
   this.url = '/api/user';
   this.loginUrl = '/api/login';
   this.profileUrl = '/api/profile';
