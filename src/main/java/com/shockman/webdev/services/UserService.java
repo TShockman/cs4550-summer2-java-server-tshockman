@@ -29,7 +29,7 @@ public class UserService {
 		return currentUser;
 	}
 	
-	@PostMapping("/login")
+	@PostMapping("/api/login")
 	public User login(@RequestBody User user, HttpSession session) {
 		user = repository.findUserByCredentials(user.getUsername(), user.getPassword());
 		session.setAttribute("currentUser", user);
