@@ -9,6 +9,7 @@ function UserServiceClient() {
   this.login = login;
   this.updateProfile = updateProfile;
   this.logout = logout;
+  this.getProfile = getProfile;
   this.url = '/api/user';
   this.loginUrl = '/api/login';
   this.profileUrl = '/api/profile';
@@ -87,6 +88,12 @@ function UserServiceClient() {
       headers: {
         'Content-Type': 'application/json'
       },
+      credentials: 'include'
+    }).then(response => response.json());
+  }
+
+  function getProfile() {
+    return fetch(self.profileUrl, {
       credentials: 'include'
     }).then(response => response.json());
   }

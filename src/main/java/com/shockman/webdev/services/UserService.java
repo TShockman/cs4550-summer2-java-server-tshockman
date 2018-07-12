@@ -36,7 +36,7 @@ public class UserService {
 		return user;
 	}
 	
-	@GetMapping("/profile")
+	@GetMapping("/api/profile")
 	public Optional<User> profile(HttpSession session) {
 		User currentUser = (User) session.getAttribute("currentUser");
 		if (currentUser == null) {
