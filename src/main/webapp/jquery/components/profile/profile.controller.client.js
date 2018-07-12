@@ -2,7 +2,7 @@
   let currentUser = null;
   const userService = new UserServiceClient();
 
-  const $username = $('#uusername');
+  const $username = $('#username');
   const $phone = $('#phone');
   const $email = $('#email');
   const $role = $('#role');
@@ -11,7 +11,7 @@
   const $logout = $('#logout');
 
   $updateButton.click(updateHandler);
-  $logoutButton.click(logout);
+  $logout.click(logout);
 
   getProfile().then(renderProfile);
 
@@ -35,11 +35,11 @@
     if (!user) return;
 
     currentUser = user;
-    $username.val(user.getUsername());
-    $phone.val(user.getPhone());
-    $email.val(user.getEmail());
-    $role.val(user.getRole());
-    $dob.val(user.getDateOfBirth());
+    $username.val(user.username);
+    $phone.val(user.phone);
+    $email.val(user.email);
+    $role.val(user.role);
+    $dob.val(user.dateOfBirth);
   }
 
   function getProfile() {
