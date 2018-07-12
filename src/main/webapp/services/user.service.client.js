@@ -9,6 +9,8 @@ function UserServiceClient() {
   this.login = login;
   this.url = '/api/user';
   this.loginUrl = '/api/login';
+  this.profileUrl = '/api/profile';
+  this.logoutUrl = '/api/logout';
   const self = this;
 
   function deleteUser(id) {
@@ -61,6 +63,24 @@ function UserServiceClient() {
   function login(user) {
     return fetch(self.loginUrl, {
       method: 'post',
+      body: JSON.stringify(user),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include'
+    }).then(response => response.json());
+  }
+
+  function logout() {
+    return fetch(self.logoutUrl, {
+      method: 'post',
+      credentials: 'include'
+    })
+  }
+
+  function updateProfile(user) {
+    return fetch(self.profileUrl, {
+      method: 'put',
       body: JSON.stringify(user),
       headers: {
         'Content-Type': 'application/json'
