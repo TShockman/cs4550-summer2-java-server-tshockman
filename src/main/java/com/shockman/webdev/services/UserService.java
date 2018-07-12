@@ -22,8 +22,8 @@ public class UserService {
 	@Autowired
 	UserRepository repository;
 	
-	@PostMapping("/register")
-	public User register(@RequestBody User user, HttpSession session) {
+	@PostMapping("/api/user")
+	public User createUser(@RequestBody User user, HttpSession session) {
 		User currentUser = repository.save(user);
 		session.setAttribute("currentUser", currentUser);
 		return currentUser;
@@ -58,7 +58,7 @@ public class UserService {
 	}
 	
 	@GetMapping("/api/user/{userId}")
-	public Optional<User> findUserByUserId(@PathVariable("userId") String userId) {
+	public Optional<User> findUserById(@PathVariable("userId") String userId) {
 		int id = Integer.parseInt(userId);
 		return repository.findById(id);
 	}
