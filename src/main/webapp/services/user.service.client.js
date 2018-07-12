@@ -29,7 +29,7 @@ function UserServiceClient() {
 
   function createUser(user) {
     return fetch(self.url, {
-      method: 'put',
+      method: 'post',
       body: JSON.stringify(user),
       headers: {
         'Content-Type': 'application/json'
@@ -54,7 +54,7 @@ function UserServiceClient() {
 
   function register(user) {
     return fetch(self.url, {
-      method: 'put',
+      method: 'post',
       body: JSON.stringify(user),
       headers: {
         'Content-Type': 'application/json'
