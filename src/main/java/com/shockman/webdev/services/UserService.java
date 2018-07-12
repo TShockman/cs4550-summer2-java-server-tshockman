@@ -52,6 +52,9 @@ public class UserService {
 			User user = optional.get();
 			user.setFirstName(newUser.getFirstName());
 			user.setLastName(newUser.getLastName());
+			user.setUsername(newUser.getUsername());
+			user.setRole(newUser.getRole());
+			user.setEmail(newUser.getEmail());
 			return repository.save(user);
 		}
 		return null;
@@ -71,5 +74,28 @@ public class UserService {
 	@GetMapping("/api/user")
 	public List<User> findAllUsers() {
 		return (List<User>) repository.findAll();
+	}
+	
+	@PutMapping("/api/profile")
+	public User updateProfile(@RequestBody User user, HttpSession session) {
+		User currentUser = (User) session.getAttribute("currentUser");
+		if (currentUser == null) {
+			return null;
+		}
+		Optional<User> optional = repository.findById(currentUser.getId());
+		if(optional.isPresent()) {
+			User repoUser = optional.get();
+			repoUser.setPhone(user.getPhone());
+			repoUser.setEmail(user.getEmail());
+			repoUser.setRole(user.getRole());
+			repoUser.setDateOfBirth(user.getDateOfBirth());
+			return repository.save(repoUser);
+		}
+		return null;
+	}
+	
+	@PostMapping("/api/logout")
+	public void logout(HttpSession session) {
+		session.setAttribute("currentUser", null);
 	}
 }
