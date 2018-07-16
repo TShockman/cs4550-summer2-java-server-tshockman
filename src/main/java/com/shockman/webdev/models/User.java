@@ -1,10 +1,12 @@
 package com.shockman.webdev.models;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class User {
@@ -18,7 +20,8 @@ public class User {
 	private String role;
 	private String phone;
 	private String email;
-	private LocalDateTime dateOfBirth;
+	@Temporal(TemporalType.DATE)
+	private Date dateOfBirth;
 	
 	public int getId() {
 		return id;
@@ -56,11 +59,11 @@ public class User {
 		this.email = email;
 	}
 
-	public LocalDateTime getDateOfBirth() {
+	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(LocalDateTime dateOfBirth) {
+	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
