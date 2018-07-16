@@ -89,6 +89,7 @@ public class UserService {
 			repoUser.setEmail(user.getEmail());
 			repoUser.setRole(user.getRole());
 			repoUser.setDateOfBirth(user.getDateOfBirth());
+			System.out.println("selected date of birth" + user.getDateOfBirth().toString());
 			return repository.save(repoUser);
 		}
 		return null;

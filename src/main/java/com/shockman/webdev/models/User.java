@@ -1,4 +1,5 @@
 package com.shockman.webdev.models;
+
 import java.util.Date;
 
 import javax.persistence.Entity;
