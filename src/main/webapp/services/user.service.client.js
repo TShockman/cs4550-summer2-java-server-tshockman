@@ -24,7 +24,8 @@ function UserServiceClient() {
 
   function findAllUsers() {
     return fetch(self.url)
-      .then(response => response.json());
+      .then(response => response.json())
+      .then(users => users.map(parseUser));
   }
 
   function createUser(user) {
@@ -34,12 +35,15 @@ function UserServiceClient() {
       headers: {
         'Content-Type': 'application/json'
       }
-    }).then(response => response.json());
+    })
+      .then(response => response.json())
+      .then(parseUser);
   }
 
   function findUserById(id) {
     return fetch(`${self.url}/${id}`)
-      .then(response => response.json());
+      .then(response => response.json())
+      .then(parseUser);
   }
 
   function updateUser(id, user) {
@@ -49,7 +53,9 @@ function UserServiceClient() {
       headers: {
         'Content-Type': 'application/json'
       }
-    }).then(response => response.json());
+    })
+      .then(response => response.json())
+      .then(parseUser);
   }
 
   function register(user) {
@@ -60,7 +66,9 @@ function UserServiceClient() {
         'Content-Type': 'application/json'
       },
       credentials: 'include'
-    }).then(response => response.json());
+    })
+      .then(response => response.json())
+      .then(parseUser);
   }
 
   function login(user) {
@@ -71,14 +79,16 @@ function UserServiceClient() {
         'Content-Type': 'application/json'
       },
       credentials: 'include'
-    }).then(response => response.json());
+    })
+      .then(response => response.json())
+      .then(parseUser);
   }
 
   function logout() {
     return fetch(self.logoutUrl, {
       method: 'post',
       credentials: 'include'
-    })
+    });
   }
 
   function updateProfile(user) {
@@ -89,13 +99,17 @@ function UserServiceClient() {
         'Content-Type': 'application/json'
       },
       credentials: 'include'
-    }).then(response => response.json());
+    })
+      .then(response => response.json())
+      .then(parseUser);
   }
 
   function getProfile() {
     return fetch(self.profileUrl, {
       credentials: 'include'
-    }).then(response => response.json());
+    })
+      .then(response => response.json())
+      .then(parseUser);
   }
 
 }

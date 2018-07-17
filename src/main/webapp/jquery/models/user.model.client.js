@@ -1,4 +1,5 @@
-function User(username, password, firstName, lastName, role, phone, email, dateOfBirth) {
+function User(username, password, firstName, lastName, role, phone, email, dateOfBirth, id) {
+
   this.username = username;
   this.password = password;
   this.firstName = firstName;
@@ -7,6 +8,7 @@ function User(username, password, firstName, lastName, role, phone, email, dateO
   this.phone = phone;
   this.email = email;
   this.dateOfBirth = dateOfBirth;
+  this.id = id;
 
   this.setUsername = setUsername;
   this.getUsername = getUsername;
@@ -24,6 +26,8 @@ function User(username, password, firstName, lastName, role, phone, email, dateO
   this.getEmail = getEmail;
   this.setDateOfBirth = setDateOfBirth;
   this.getDateOfBirth = getDateOfBirth;
+  this.setId = setId;
+  this.getId = getId;
 
   function getUsername() {
     return this.username;
@@ -57,6 +61,10 @@ function User(username, password, firstName, lastName, role, phone, email, dateO
     return this.dateOfBirth;
   }
 
+  function getId() {
+    return this.id;
+  }
+
   function setUsername(username) {
     this.username = username;
   }
@@ -88,4 +96,18 @@ function User(username, password, firstName, lastName, role, phone, email, dateO
   function setDateOfBirth(dateOfBirth) {
     this.dateOfBirth = dateOfBirth;
   }
+
+  function setId(id) {
+    this.id = id;
+  }
+}
+
+function parseUser(obj) {
+  console.log('Parsing user', JSON.stringify(obj, null, 2));
+  if (!obj) {
+    console.warn('Cannot parse nonexistent user.');
+    return null;
+  }
+  const {username, password, firstName, lastName, role, phone, email, dateOfBirth, id} = obj;
+  return new User(username, password, firstName, lastName, role, phone, email, dateOfBirth, id);
 }

@@ -35,11 +35,11 @@
     if (!user) return;
 
     currentUser = user;
-    $username.val(user.username);
-    $phone.val(user.phone);
-    $email.val(user.email);
-    $role.val(user.role);
-    $dob.val(user.dateOfBirth);
+    $username.val(user.getUsername());
+    $phone.val(user.getPhone());
+    $email.val(user.getEmail());
+    $role.val(user.getRole());
+    $dob.val(user.getDateOfBirth());
   }
 
   function getProfile() {
