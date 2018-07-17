@@ -32,7 +32,10 @@ public class ModuleService {
 		
 		if(opt.isPresent()) {
 			Course course = opt.get();
+			Date now = new Date();
 			newModule.setCourse(course);
+			newModule.setCreated(now);
+			newModule.setModified(now);
 			return moduleRepository.save(newModule);
 		}
 		return null;
