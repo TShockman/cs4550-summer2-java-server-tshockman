@@ -1,7 +1,6 @@
 package com.shockman.webdev.services;
 
 import java.util.Date;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,6 +46,7 @@ public class CourseService {
 			Course course = optional.get();
 			course.setModified(new Date());
 			course.setTitle(newCourse.getTitle());
+			course.setModules(newCourse.getModules());
 			return repository.save(course);
 		}
 		return null;
