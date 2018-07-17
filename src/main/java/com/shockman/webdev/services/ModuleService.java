@@ -64,6 +64,7 @@ public class ModuleService {
 			module.setModified(new Date());
 			module.setTitle(newModule.getTitle());
 			module.setCourse(newModule.getCourse());
+			module.setLessons(newModule.getLessons());
 			return moduleRepository.save(module);
 		}
 		return null;
