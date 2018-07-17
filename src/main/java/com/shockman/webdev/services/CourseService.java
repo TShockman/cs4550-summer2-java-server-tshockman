@@ -47,6 +47,7 @@ public class CourseService {
 			course.setModified(new Date());
 			course.setTitle(newCourse.getTitle());
 			course.setModules(newCourse.getModules());
+			course.setOwner(newCourse.getOwner());
 			return repository.save(course);
 		}
 		return null;

@@ -1,13 +1,17 @@
 package com.shockman.webdev.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class User {
@@ -23,7 +27,18 @@ public class User {
 	private String email;
 	@Temporal(TemporalType.DATE)
 	private Date dateOfBirth;
+	@OneToMany(mappedBy="owner")
+	@JsonIgnore
+	private List<Course> authoredCourses;
 	
+	public List<Course> getAuthoredCourses() {
+		return authoredCourses;
+	}
+
+	public void setAuthoredCourses(List<Course> authoredCourses) {
+		this.authoredCourses = authoredCourses;
+	}
+
 	public int getId() {
 		return id;
 	}

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,7 +27,16 @@ public class Course {
 	@OneToMany(mappedBy="course")
 	@JsonIgnore
 	private List<Module> modules;
+	@ManyToOne
+	@JsonIgnore
+	private User owner;
 	
+	public User getOwner() {
+		return owner;
+	}
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
 	public int getId() {
 		return id;
 	}
