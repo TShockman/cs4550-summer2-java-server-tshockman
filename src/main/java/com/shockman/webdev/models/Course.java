@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,8 +28,7 @@ public class Course {
 	@OneToMany(mappedBy="course")
 	@JsonIgnore
 	private List<Module> modules;
-	@ManyToOne
-	@JsonIgnore
+	@ManyToOne(fetch = FetchType.EAGER)
 	private User owner;
 	
 	public User getOwner() {

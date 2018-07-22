@@ -4,6 +4,7 @@
   const $username = $('#username');
   const $password = $('#password');
   const $passwordConfirm = $('#passwordConfirm');
+  const $role = $('#role');
 
   $registerBtn.click(registerHandler);
 
@@ -11,12 +12,13 @@
     const username = $username.val();
     const password = $password.val();
     const passwordConfirm = $passwordConfirm.val();
+    const role = $role.val();
 
     if (!password && password !== passwordConfirm) {
       return registrationFailed();
     }
 
-    const userObj = new User(username, password);
+    const userObj = new User(username, password, null, null, role);
 
     userClient.register(userObj)
       .then(registrationSucceeded, registrationFailed);
