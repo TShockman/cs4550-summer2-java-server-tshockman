@@ -69,7 +69,6 @@ public class WidgetService {
 			widget.setClassName(newWidget.getClassName());
 			widget.setHeight(newWidget.getHeight());
 			widget.setHref(newWidget.getHref());
-			widget.setLesson(newWidget.getLesson());
 			widget.setListItems(newWidget.getListItems());
 			widget.setListType(newWidget.getListType());
 			widget.setName(newWidget.getName());
