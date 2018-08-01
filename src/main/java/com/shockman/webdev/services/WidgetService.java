@@ -50,7 +50,7 @@ public class WidgetService {
 		return null;
 	}
 	
-	@PostMapping("/api/lesson{lid}/widget")
+	@PostMapping("/api/lesson/{lid}/widget")
 	public Widget createWidget(@PathVariable("lid") int lid, @RequestBody Widget newWidget) {
 		Optional<Lesson> opt = lessonRepository.findById(lid);
 		if (opt.isPresent()) {
